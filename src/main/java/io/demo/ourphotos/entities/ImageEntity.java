@@ -2,12 +2,13 @@ package io.demo.ourphotos.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import java.util.List;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Entity
-public class Group {
+public class ImageEntity {
     @Id
     private int id;
-    private String name;
-    private List<Integer> memberList;
+    private String imageUrl;
+    private int postId;
 }
