@@ -2,19 +2,19 @@ package io.demo.ourphotos.domain.post;
 
 import io.demo.ourphotos.common.utils.TokenGenerator;
 import io.demo.ourphotos.domain.AbstractEntity;
-import io.demo.ourphotos.entities.UserEntity;
+import io.demo.ourphotos.domain.group.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -29,14 +29,16 @@ public class Post extends AbstractEntity {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private UserEntity author;
+    @JoinColumn(name = "user_id")
+    private User author;
 
     private String txtContent;
-    private List<String> imgLContents;
+
+    @OneToMany(mappedBy = "post")
+    private List<PostImage> imgContents;
 
     @Builder
-    public Post(String title, UserEntity author, String txtContent) {
+    public Post(String title, User author, String txtContent) {
         this.postToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_POST);
         this.title = title;
         this.author = author;
