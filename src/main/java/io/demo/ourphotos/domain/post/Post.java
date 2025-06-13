@@ -38,11 +38,22 @@ public class Post extends AbstractEntity {
     private List<PostImage> imgContents;
 
     @Builder
-    public Post(String title, User author, String txtContent) {
+    public Post(String title, User author, String txtContent, List<PostImage> imgContents) {
         this.postToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_POST);
         this.title = title;
         this.author = author;
         this.txtContent = txtContent;
+        this.imgContents = imgContents;
+    }
+
+    public PostInfo toDomain() {
+        return PostInfo.builder()
+                .postToken(postToken)
+                .title(title)
+                .author(author)
+                .txtContent(txtContent)
+                .imgContents(imgContents)
+                .build();
     }
 }
 
