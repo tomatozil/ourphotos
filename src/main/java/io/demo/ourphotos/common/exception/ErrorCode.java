@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
-    EMPTY_CONSTRUCTOR_ARGUMENT("constructor argument is empty");
+    POST_NOT_FOUND("no posts found");
 
     private final String message;
 }
