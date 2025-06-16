@@ -1,5 +1,6 @@
 package io.demo.ourphotos.common.exception;
 
+import io.demo.ourphotos.common.response.ErrorCode;
 import lombok.Getter;
 
 @Getter
