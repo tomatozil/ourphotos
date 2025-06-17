@@ -12,20 +12,12 @@ public record PostCommand(
     String txtContent,
     List<MultipartFile> files
 ) {
-    public Post toEntity() {
-        List<PostImage> imgContents = files.stream()
-                .map(this::convertFileToImage)
-                .toList();
-
+    public Post toEntity(List<PostImage> imgContents) {
         return Post.builder()
                 .author(author)
                 .title(title)
                 .txtContent(txtContent)
                 .imgContents(imgContents)
                 .build();
-    }
-
-    public PostImage convertFileToImage(MultipartFile file) {
-        return null;
     }
 }

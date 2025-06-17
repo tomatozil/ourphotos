@@ -1,7 +1,7 @@
 package io.demo.ourphotos.infrastructure.post;
 
 import io.demo.ourphotos.common.exception.BusinessException;
-import io.demo.ourphotos.common.exception.ErrorCode;
+import io.demo.ourphotos.common.response.ErrorCode;
 import io.demo.ourphotos.domain.post.Post;
 import io.demo.ourphotos.domain.post.PostReader;
 import lombok.RequiredArgsConstructor;

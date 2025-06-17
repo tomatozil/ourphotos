@@ -13,6 +13,7 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional
     public PostInfo postPost(PostCommand postCommand) {
+
         var initPost = postCommand.toEntity();
         Post storedPost = postStore.store(initPost);
 
