@@ -10,7 +10,7 @@ public record CommonResponse<T> (
         Integer errorCode
 ) {
 
-    public CommonResponse<T> success(T data, SuccessCode code) {
+    public static <T> CommonResponse<T> success(T data, SuccessCode code) {
         return (CommonResponse<T>) CommonResponse.builder()
                 .result(Result.SUCCESS)
                 .data(data)
@@ -18,11 +18,15 @@ public record CommonResponse<T> (
                 .build();
     }
 
-    public CommonResponse<T> success(T data) {
+    public static <T> CommonResponse<T> success(T data) {
         return success(data, SuccessCode.OK);
     }
 
-    public CommonResponse fail(ErrorCode code) {
+    public static <T> CommonResponse<T> success() {
+        return success(null, SuccessCode.OK);
+    }
+
+    public static CommonResponse fail(ErrorCode code) {
         return CommonResponse.builder()
                 .result(Result.FAIL)
                 .message(code.getMessage())
