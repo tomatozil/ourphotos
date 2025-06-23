@@ -3,16 +3,15 @@ package io.demo.ourphotos.domain.post;
 import io.demo.ourphotos.domain.group.User;
 import java.util.List;
 import lombok.Builder;
-import org.springframework.web.multipart.MultipartFile;
 
 @Builder
 public record PostCommand(
     String title,
     User author,
     String txtContent,
-    List<MultipartFile> files
+    List<PostImage> imgContents
 ) {
-    public Post toEntity(List<PostImage> imgContents) {
+    public Post toEntity() {
         return Post.builder()
                 .author(author)
                 .title(title)
